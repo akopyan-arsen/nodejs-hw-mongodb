@@ -1,6 +1,9 @@
 import { getAllContacts, getContactById } from '../services/contacts.js';
+import { isValidObjectId } from 'mongoose';
 
-export const getContactsController = async (req, res) => {
+import createHttpError from 'http-errors';
+
+export const getContactsController = async (req, res, next) => {
   const contacts = await getAllContacts();
 
   res.status(200).json({
@@ -12,13 +15,13 @@ export const getContactsController = async (req, res) => {
 
 export const getContactByIdController = async (req, res, next) => {
   const { contactId } = req.params;
+  if (!isValidObjectId(contactId)) {
+    return next(createHttpError(400, 'Invalid contact ID'));
+  }
   const contact = await getContactById(contactId);
 
   if (!contact) {
-    res.status(404).json({
-      message: 'Student not found',
-    });
-    return;
+    throw createHttpError(404, 'Contact not found');
   }
 
   res.status(200).json({
