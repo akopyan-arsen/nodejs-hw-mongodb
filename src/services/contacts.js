@@ -10,8 +10,10 @@ export const getContactById = async (contactId) => {
   return contact;
 };
 export const createContact = async (payload) => {
-  ContactsCollection.create(payload);
+  const contact = ContactsCollection.create(payload);
+  return contact;
 };
+
 export const deleteContact = async (contactId) => {
   const contact = await ContactsCollection.findOneAndDelete({
     _id: contactId,
