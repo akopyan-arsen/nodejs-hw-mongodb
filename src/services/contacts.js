@@ -6,10 +6,12 @@ export const getAllContacts = async ({
   page = 1,
   perPage = 10,
   sortOrder = SORT_ORDER.ASC,
-  sortBy = '_id',
+  sortBy = 'name',
 }) => {
   const limit = perPage;
   const skip = (page - 1) * perPage;
+  const sortOptions = { [sortBy]: sortOrder };
+  console.log('Sort Options:', sortOptions);
 
   const contactsQuery = ContactsCollection.find();
   const contactsCount = await ContactsCollection.find()
@@ -19,7 +21,7 @@ export const getAllContacts = async ({
   const contacts = await contactsQuery
     .skip(skip)
     .limit(limit)
-    .sort({ [sortBy]: sortOrder })
+    .sort(sortOptions)
     .exec();
 
   const paginationData = calculatePaginationData(contactsCount, perPage, page);
