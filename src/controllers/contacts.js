@@ -48,9 +48,9 @@ export const getContactByIdController = async (req, res, next) => {
 export const createContactController = async (req, res) => {
   const contact = await createContact(req.body);
 
-  res.status(201).json({
+  res.status(201).send({
     status: 201,
-    message: `Successfully created a contact!`,
+    message: 'Successfully created a contact!',
     data: contact,
   });
 };
