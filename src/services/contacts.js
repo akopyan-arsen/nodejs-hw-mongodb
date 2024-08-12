@@ -12,7 +12,6 @@ export const getAllContacts = async ({
   const limit = perPage;
   const skip = (page - 1) * perPage;
   const sortOptions = { [sortBy]: sortOrder };
-  console.log('Sort Options:', sortOptions);
 
   const contactsQuery = ContactsCollection.find();
 
