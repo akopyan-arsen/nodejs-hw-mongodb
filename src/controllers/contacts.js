@@ -55,7 +55,7 @@ export const createContactController = async (req, res) => {
     isFavourite: req.body.isFavourite,
     contactType: req.body.contactType,
   };
-  const contact = await createContact(contactSchema);
+  const contact = await createContact(contactSchema, req.user._id);
 
   res.status(201).send({
     status: 201,
