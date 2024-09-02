@@ -20,18 +20,29 @@ requestBody:
         type: object
         properties:
           name:
+            description: "Contact's name"
             type: string
-            example: John Doe
+            example: 'John Doe'
+          phoneNumber:
+            description: "Contact's phone number"
+            type: string
+            example: '+380509751217'
           email:
+            description: "Contact's email"
             type: string
-            example: johndoe@example.com
-          phone:
+            example: 'example@gmail.com'
+          isFavourite:
+            description: 'Is contact favourite'
+            type: boolean
+            example: true
+          contactType:
+            description: 'contact type'
             type: string
-            example: '+380991234567'
+            enum: ['work', 'home', 'personal']
           photo:
+            description: "Link to contact's photo"
             type: string
             format: binary
-            description: 'Profile photo to upload'
 responses:
   '200':
     description: 'Update contact by id'
