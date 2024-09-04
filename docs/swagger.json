@@ -14,7 +14,7 @@
       "url": "http://localhost:3000"
     },
     {
-      "url": "https://example.com/api/v1"
+      "url": "https://nodejs-hw-mongodb-vwrc.onrender.com"
     }
   ],
   "tags": [
@@ -192,11 +192,6 @@
                   "userId"
                 ],
                 "properties": {
-                  "_id": {
-                    "description": "Contact's id",
-                    "type": "string",
-                    "example": "65e4decdd286b30065d54af9"
-                  },
                   "name": {
                     "description": "Contact's name",
                     "type": "string",
@@ -225,11 +220,6 @@
                       "home",
                       "personal"
                     ]
-                  },
-                  "userId": {
-                    "description": "User's id",
-                    "type": "string",
-                    "example": "65e4decdd286b30065d54af9"
                   },
                   "photo": {
                     "description": "Link to contact's photo",
@@ -367,21 +357,38 @@
                 "type": "object",
                 "properties": {
                   "name": {
+                    "description": "Contact's name",
                     "type": "string",
                     "example": "John Doe"
                   },
-                  "email": {
+                  "phoneNumber": {
+                    "description": "Contact's phone number",
                     "type": "string",
-                    "example": "johndoe@example.com"
+                    "example": "+380509751217"
                   },
-                  "phone": {
+                  "email": {
+                    "description": "Contact's email",
                     "type": "string",
-                    "example": "+380991234567"
+                    "example": "example@gmail.com"
+                  },
+                  "isFavourite": {
+                    "description": "Is contact favourite",
+                    "type": "boolean",
+                    "example": true
+                  },
+                  "contactType": {
+                    "description": "contact type",
+                    "type": "string",
+                    "enum": [
+                      "work",
+                      "home",
+                      "personal"
+                    ]
                   },
                   "photo": {
+                    "description": "Link to contact's photo",
                     "type": "string",
-                    "format": "binary",
-                    "description": "Profile photo to upload"
+                    "format": "binary"
                   }
                 }
               }
